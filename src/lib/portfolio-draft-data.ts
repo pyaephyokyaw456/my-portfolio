@@ -95,10 +95,10 @@ export const siteData = {
         category: "Backend Architecture",
         skills: [
           { name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" },
-          { name: "Spring Boot", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/spring.svg" },
-          { name: "Spring Security", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/springsecurity.svg" },
+          { name: "Spring Boot", icon: "https://cdn.simpleicons.org/spring/6DB33F" },
+          { name: "Spring Security", icon: "https://cdn.simpleicons.org/springsecurity/6DB33F" },
           { name: "Hibernate JPA", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/hibernate/hibernate-original.svg" },
-          { name: "Apache JMeter", icon: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/apachejmeter.svg" }
+          { name: "Apache JMeter", icon: "https://cdn.simpleicons.org/apachejmeter/D22128" }
         ]
       },
       {
