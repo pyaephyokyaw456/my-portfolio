@@ -58,10 +58,12 @@ function MagneticIcon({ tooltip, iconUrl, altText }: { tooltip: string; iconUrl:
          className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-200 ease-out z-10 relative flex items-center justify-center filter drop-shadow hover:drop-shadow-lg"
          style={{ transform: `translate(${position.x}px, ${position.y}px) scale(${position.x !== 0 ? 1.15 : 1})` }}
        >
-         <img 
+         <Image 
            src={iconUrl} 
            alt={altText} 
-           className="w-full h-full object-contain grayscale opacity-80 dark:opacity-60 transition-all duration-300 group-hover/icon:grayscale-0 group-hover/icon:opacity-100" 
+           fill
+           sizes="40px"
+           className="object-contain grayscale opacity-80 dark:opacity-60 transition-all duration-300 group-hover/icon:grayscale-0 group-hover/icon:opacity-100" 
          />
        </div>
        <span className="absolute -top-7 bg-[#2b2929] border border-[var(--border-strong)] text-white text-[0.65rem] font-bold tracking-widest px-3 py-1 rounded shadow-lg whitespace-nowrap opacity-0 group-hover/icon:opacity-100 transition-opacity duration-300 pointer-events-none uppercase z-20">
