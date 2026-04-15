@@ -176,26 +176,26 @@ export function PortfolioDraft() {
 
     const ctx = gsap.context(() => {
       if (!reduceMotion) {
-        /* ── Hero Entrance: Pre-calculate states immediately to prevent FOUC ── */
-        const heroTimeline = gsap.timeline({ paused: true, defaults: { ease: "power4.out" } });
+        /* ── Hero Entrance: GPU-optimized for mobile ── */
+        const heroTimeline = gsap.timeline({ paused: true, defaults: { ease: "power3.out", force3D: true } });
 
         heroTimeline
           .fromTo(
             ".hero-badge",
             { x: -20, opacity: 0 },
-            { x: 0, opacity: 1, duration: 0.8, delay: 0.1 }
+            { x: 0, opacity: 1, duration: 0.6, delay: 0.1 }
           )
           .fromTo(
             ".hero-title-letter",
-            { yPercent: 120, rotate: 8, opacity: 0 },
-            { yPercent: 0, rotate: 0, opacity: 1, duration: 0.9, stagger: 0.04 },
-            "-=0.5"
+            { yPercent: 100, opacity: 0 },
+            { yPercent: 0, opacity: 1, duration: 0.7, stagger: 0.03 },
+            "-=0.3"
           )
           .fromTo(
             ".hero-support",
-            { y: 30, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.8, stagger: 0.15 },
-            "-=0.4"
+            { y: 20, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6, stagger: 0.1 },
+            "-=0.3"
           );
 
         heroTlRef.current = heroTimeline;
@@ -221,17 +221,16 @@ export function PortfolioDraft() {
         });
       }
 
-      /* ── Scroll-triggered Masked Reveals (Global) ── */
+      /* ── Scroll-triggered Reveals (GPU-friendly: transform + opacity only) ── */
       gsap.utils.toArray<HTMLElement>(".reveal-block").forEach((block) => {
         ScrollTrigger.create({
           trigger: block,
           start: "top 85%",
           once: true,
           onEnter: () => {
-             // Masked slide up
              gsap.fromTo(block, 
-               { y: 60, opacity: 0, clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" },
-               { y: 0, opacity: 1, clipPath: "polygon(0 -20%, 100% -20%, 100% 120%, 0 120%)", duration: 1.2, ease: "power4.out", clearProps: "all" }
+               { y: 40, opacity: 0 },
+               { y: 0, opacity: 1, duration: 0.8, ease: "power3.out", force3D: true, clearProps: "all" }
              );
           },
         });
@@ -247,13 +246,13 @@ export function PortfolioDraft() {
       });
       // gsap natively applies these starting positions immediately on load, solving the flash issue.
       aboutTl.fromTo(".about-portrait-panel", 
-        { x: -80, opacity: 0, clipPath: "polygon(0 0, 0 0, 0 100%, 0% 100%)" },
-        { x: 0, opacity: 1, clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", duration: 1.4, ease: "power4.out", clearProps: "clipPath" }
+        { x: -60, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1, ease: "power3.out", force3D: true }
       )
       .fromTo(".about-text-panel", 
-        { x: 150, opacity: 0 },
-        { x: 0, opacity: 1, duration: 1.4, ease: "power4.out" },
-        "-=1.1" // start text animation 0.3s after portrait starts
+        { x: 80, opacity: 0 },
+        { x: 0, opacity: 1, duration: 1, ease: "power3.out", force3D: true },
+        "-=0.7"
       );
 
       /* ── Custom Journey Timeline Reveal (Staggered Draw) ── */
