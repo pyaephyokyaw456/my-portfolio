@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* ─── Light Minimalist Theme ─── */
 :root {
@@ -34,12 +36,6 @@
   --border-strong: rgba(255, 255, 255, 0.2);
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.3);
-}
-
-@theme inline {
-  --color-background: var(--bg);
-  --color-foreground: var(--text-primary);
-  --font-sans: system-ui, -apple-system, sans-serif;
 }
 
 /* ─── Base ─── */
