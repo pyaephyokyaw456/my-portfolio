@@ -155,7 +155,7 @@ function Preloader({ onComplete }: { onComplete: () => void }) {
       ease: "power4.inOut",
       delay: 0.3
     });
-  }, [onComplete]);
+  }, []); // Run strictly once on mount to prevent mobile viewport resize re-evaluations
 
   return (
     <div ref={containerRef} className="fixed inset-0 z-[10000] bg-[#09090b] flex flex-col items-center justify-center will-change-transform">
@@ -174,6 +174,10 @@ export function PortfolioDraft() {
   const [showAllJourney, setShowAllJourney] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const heroTlRef = useRef<gsap.core.Timeline | null>(null);
+
+  const handlePreloaderComplete = useCallback(() => {
+    setIsLoading(false);
+  }, []);
 
   useEffect(() => {
     setMounted(true);
@@ -309,7 +313,7 @@ export function PortfolioDraft() {
   return (
     <>
       <CustomCursor />
-      {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
+      {isLoading && <Preloader onComplete={handlePreloaderComplete} />}
       
       {/* 
         This aside must remain strictly outside the `id="top"` wrapper 
