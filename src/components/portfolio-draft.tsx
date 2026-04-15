@@ -282,15 +282,15 @@ export function PortfolioDraft() {
     return () => ctx.revert();
   }, []);
 
-  // Hero Entrance GSAP - Only runs after preloader finishes
+  // Hero Entrance GSAP - Play after preloader CSS animation finishes
   useEffect(() => {
-    if (!isLoading && heroTlRef.current) {
-        // A slight delay ensures the page fade-in doesn't mask the timeline jump
+    if (heroTlRef.current) {
+        // Delay matches preloader CSS animation (3.5s)
         setTimeout(() => {
             heroTlRef.current?.play();
-        }, 100);
+        }, 3600);
     }
-  }, [isLoading]);
+  }, []);
 
   return (
     <>
@@ -360,8 +360,7 @@ export function PortfolioDraft() {
                 ))}
             </nav>
 
-            {mounted && (
-              <button
+            <button
                 className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--bg-card)] text-[var(--text-secondary)] transition-all overflow-hidden hover:text-[var(--text-primary)] hover:border-[var(--border-strong)] shadow-sm hover:scale-105 active:scale-95"
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 aria-label="Toggle theme"
@@ -369,7 +368,6 @@ export function PortfolioDraft() {
                 <Sun className={`absolute h-4 w-4 transition-all duration-500 ${theme === "dark" ? "scale-0 -rotate-90 opacity-0" : "scale-100 rotate-0 opacity-100"}`} />
                 <Moon className={`absolute h-4 w-4 transition-all duration-500 ${theme === "dark" ? "scale-100 rotate-0 opacity-100" : "scale-0 rotate-90 opacity-0"}`} />
               </button>
-            )}
 
             <button className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--bg-card)] text-[var(--text-secondary)]" onClick={() => setMenuOpen(!menuOpen)}>
               {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
