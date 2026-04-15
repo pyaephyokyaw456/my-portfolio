@@ -201,7 +201,7 @@ export const siteData = {
       },
       {
         title: "ATM Services Infrastructure",
-        subtitle: "TPS-Optimized transaction handler",
+        subtitle: "Backend-API of ATM Services",
         description: "Architected a high-concurrency ATM service backend utilizing Spring Boot, PostgreSQL, MSSQL, and Redis. Subjected to rigorous Apache JMeter load/stress testing to maximize Transactions Per Second (TPS).",
         stack: ["Spring Boot", "PostgreSQL", "Redis", "JMeter"],
         palette: ["#171513", "#2c2826", "#4ade80"],

@@ -392,7 +392,7 @@ export function PortfolioDraft() {
         <main className="relative z-10 pt-20 lg:pt-32 lg:pl-20">
           
           {/* ── HERO ── */}
-          <section className="pb-24 lg:pb-40 overflow-hidden flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-0 mt-8 mb-8" id="hero">
+          <section className="pb-12 lg:pb-40 overflow-hidden flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-0 mt-8 mb-8" id="hero">
             {/* Left Side: Text and CTA */}
             <div className="flex-1 max-w-[55rem] lg:max-w-[50%] lg:pr-8 order-1 pt-4 sm:pt-6 lg:pt-0">
               <div className="hero-badge inline-flex items-center gap-3 rounded-full border border-[var(--border)] bg-[#2b2929] px-5 py-2 text-xs font-bold tracking-widest uppercase text-white shadow-sm">
@@ -461,7 +461,7 @@ export function PortfolioDraft() {
           </section>
 
           {/* ── ABOUT (README) ── */}
-          <section className="scroll-mt-32 mt-32 md:mt-48 relative about-section-container" id="about">
+          <section className="scroll-mt-32 mt-16 md:mt-48 relative about-section-container" id="about">
              <div className="grid lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-20 overflow-hidden px-4 md:px-0">
                 {/* Portrait */}
                 <div className="about-portrait-panel relative w-full aspect-[4/5] md:aspect-[3/4] lg:aspect-auto lg:h-[600px] bg-gradient-to-b from-[var(--bg-elevated)] to-[var(--bg)] rounded-[2.5rem] overflow-hidden border border-[var(--border)] flex items-end justify-center shadow-2xl group">
