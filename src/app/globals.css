@@ -188,3 +188,27 @@ button {
 .animate-float-delayed {
   animation: float 5s ease-in-out 2.5s infinite;
 }
+
+/* ─── Preloader (Pure CSS – works without JS) ─── */
+@keyframes preloader-text-in {
+  0% { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+  40% { opacity: 1; transform: translateY(0); filter: blur(0); }
+  60% { opacity: 1; transform: translateY(0) scale(1.05); filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0) scale(1.05); filter: blur(0); }
+}
+@keyframes preloader-slide-up {
+  0%, 70% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+@keyframes preloader-hide {
+  0%, 99% { visibility: visible; }
+  100% { visibility: hidden; }
+}
+
+.preloader-container {
+  animation: preloader-slide-up 3.5s cubic-bezier(0.76, 0, 0.24, 1) forwards,
+             preloader-hide 3.5s step-end forwards;
+}
+.preloader-text {
+  animation: preloader-text-in 2.5s ease-out forwards;
+}
