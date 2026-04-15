@@ -21,7 +21,7 @@ import {
   GraduationCap,
   Award,
 } from "lucide-react";
-import { useTheme } from "next-themes";
+import { useTheme } from "@/components/theme-provider";
 import { siteData, type ProjectPreview, type SocialItem } from "@/lib/portfolio-draft-data";
 
 // ─── Custom Magnetic Icon Component ───
@@ -136,26 +136,39 @@ function Preloader({ onComplete }: { onComplete: () => void }) {
     // Lock scroll to prevent background scrolling during load
     document.body.style.overflow = "hidden";
 
-    const tl = gsap.timeline({
-      onComplete: () => {
-        document.body.style.overflow = "";
-        onComplete();
-      }
-    });
+    // Safety fallback: force-dismiss preloader after 4s even if GSAP fails
+    const fallback = setTimeout(() => {
+      document.body.style.overflow = "";
+      onComplete();
+    }, 4000);
 
-    // Cinematic fade-up sequence
-    tl.fromTo(textRef.current, 
-      { opacity: 0, y: 30, filter: 'blur(10px)' }, 
-      { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.2, ease: "power3.out", delay: 0.2 }
-    )
-    .to(textRef.current, { scale: 1.05, duration: 0.6, ease: "sine.inOut" })
-    .to(containerRef.current, { 
-      yPercent: -100, 
-      duration: 1.2, 
-      ease: "power4.inOut",
-      delay: 0.3
-    });
-  }, []); // Run strictly once on mount to prevent mobile viewport resize re-evaluations
+    try {
+      const tl = gsap.timeline({
+        onComplete: () => {
+          clearTimeout(fallback);
+          document.body.style.overflow = "";
+          onComplete();
+        }
+      });
+
+      // Cinematic fade-up sequence
+      tl.fromTo(textRef.current, 
+        { opacity: 0, y: 30, filter: 'blur(10px)' }, 
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.2, ease: "power3.out", delay: 0.2 }
+      )
+      .to(textRef.current, { scale: 1.05, duration: 0.6, ease: "sine.inOut" })
+      .to(containerRef.current, { 
+        yPercent: -100, 
+        duration: 1.2, 
+        ease: "power4.inOut",
+        delay: 0.3
+      });
+    } catch {
+      // If GSAP crashes, fallback timer will handle it
+    }
+
+    return () => clearTimeout(fallback);
+  }, []); // Run strictly once on mount
 
   return (
     <div ref={containerRef} className="fixed inset-0 z-[10000] bg-[#09090b] flex flex-col items-center justify-center will-change-transform">
