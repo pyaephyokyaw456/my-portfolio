@@ -131,11 +131,11 @@ function CustomCursor() {
 function Preloader({ onComplete }: { onComplete: () => void }) {
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    // Fire onComplete after CSS animation finishes (3.5s)
+    // Fire onComplete after CSS animation finishes (2.5s)
     const timer = setTimeout(() => {
       document.body.style.overflow = "";
       onComplete();
-    }, 3500);
+    }, 2500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -284,10 +284,10 @@ export function PortfolioDraft() {
   // Hero Entrance GSAP - Play after preloader CSS animation finishes
   useEffect(() => {
     if (heroTlRef.current) {
-        // Delay matches preloader CSS animation (3.5s)
+        // Delay matches preloader CSS animation (2.5s)
         setTimeout(() => {
             heroTlRef.current?.play();
-        }, 3600);
+        }, 2600);
     }
   }, []);
 
@@ -447,6 +447,8 @@ export function PortfolioDraft() {
                          src={siteData.hero.image} 
                          alt="Portrait" 
                          fill
+                         priority
+                         loading="eager"
                          sizes="(max-width: 640px) 92vw, (max-width: 1024px) 60vw, 50vw"
                          className="object-contain drop-shadow-[0_10px_40px_rgba(0,0,0,0.15)]"
                          style={{

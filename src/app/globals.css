@@ -198,13 +198,13 @@ button {
 
 /* ─── Preloader (Pure CSS – works without JS) ─── */
 @keyframes preloader-text-in {
-  0% { opacity: 0; transform: translateY(30px); filter: blur(10px); }
-  40% { opacity: 1; transform: translateY(0); filter: blur(0); }
-  60% { opacity: 1; transform: translateY(0) scale(1.05); filter: blur(0); }
-  100% { opacity: 1; transform: translateY(0) scale(1.05); filter: blur(0); }
+  0% { opacity: 0; transform: translateY(20px); filter: blur(8px); }
+  50% { opacity: 1; transform: translateY(0); filter: blur(0); }
+  80% { opacity: 1; transform: translateY(0) scale(1.03); filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0) scale(1.03); filter: blur(0); }
 }
 @keyframes preloader-slide-up {
-  0%, 70% { transform: translateY(0); }
+  0%, 65% { transform: translateY(0); }
   100% { transform: translateY(-100%); }
 }
 @keyframes preloader-hide {
@@ -213,9 +213,9 @@ button {
 }
 
 .preloader-container {
-  animation: preloader-slide-up 3.5s cubic-bezier(0.76, 0, 0.24, 1) forwards,
-             preloader-hide 3.5s step-end forwards;
+  animation: preloader-slide-up 2.5s cubic-bezier(0.76, 0, 0.24, 1) forwards,
+             preloader-hide 2.5s step-end forwards;
 }
 .preloader-text {
-  animation: preloader-text-in 2.5s ease-out forwards;
+  animation: preloader-text-in 1.5s ease-out forwards;
 }
