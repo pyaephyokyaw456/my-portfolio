@@ -58,13 +58,15 @@ function MagneticIcon({ tooltip, iconUrl, altText }: { tooltip: string; iconUrl:
          className="w-8 h-8 md:w-10 md:h-10 transition-transform duration-200 ease-out z-10 relative flex items-center justify-center filter drop-shadow hover:drop-shadow-lg"
          style={{ transform: `translate(${position.x}px, ${position.y}px) scale(${position.x !== 0 ? 1.15 : 1})` }}
        >
-         <Image 
-           src={iconUrl} 
-           alt={altText} 
-           fill
-           sizes="40px"
-           className="object-contain grayscale opacity-80 dark:opacity-60 transition-all duration-300 group-hover/icon:grayscale-0 group-hover/icon:opacity-100" 
-         />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img 
+            src={iconUrl} 
+            alt={altText} 
+            width={40}
+            height={40}
+            loading="lazy"
+            className="w-full h-full object-contain grayscale opacity-80 dark:opacity-60 transition-all duration-300 group-hover/icon:grayscale-0 group-hover/icon:opacity-100" 
+          />
        </div>
        <span className="absolute -top-7 bg-[#2b2929] border border-[var(--border-strong)] text-white text-[0.65rem] font-bold tracking-widest px-3 py-1 rounded shadow-lg whitespace-nowrap opacity-0 group-hover/icon:opacity-100 transition-opacity duration-300 pointer-events-none uppercase z-20">
          {tooltip}
@@ -275,8 +277,62 @@ export function PortfolioDraft() {
       .fromTo(".journey-item", 
          { x: -50, opacity: 0 },
          { x: 0, opacity: 1, duration: 0.8, stagger: 0.25, ease: "power3.out" },
-         "-=1.0" // Start popping items while line is actively drawing down
+         "-=1.0"
       );
+
+      /* ── Works Counter Stagger (left ↔ right) ── */
+      const workCards = gsap.utils.toArray<HTMLElement>(".works-card");
+      workCards.forEach((card) => {
+        const isFromLeft = card.classList.contains("works-from-left");
+        const isFromRight = card.classList.contains("works-from-right");
+        const xStart = isFromLeft ? -80 : isFromRight ? 80 : 0;
+        const yStart = (!isFromLeft && !isFromRight) ? 60 : 30;
+
+        gsap.fromTo(card,
+          { x: xStart, y: yStart, opacity: 0 },
+          {
+            x: 0, y: 0, opacity: 1,
+            duration: 1, ease: "power3.out", force3D: true,
+            scrollTrigger: {
+              trigger: card,
+              start: "top 88%",
+              once: true,
+            },
+          }
+        );
+      });
+
+      /* ── Skills Typewriter Reveal (title → desc → icons) ── */
+      const skillCards = gsap.utils.toArray<HTMLElement>(".skill-card");
+      skillCards.forEach((card) => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            once: true,
+          },
+        });
+
+        tl.fromTo(card,
+          { y: 40, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, ease: "power3.out", force3D: true }
+        )
+        .fromTo(card.querySelector(".skill-title")!,
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" },
+          "-=0.2"
+        )
+        .fromTo(card.querySelector(".skill-desc")!,
+          { y: 15, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" },
+          "-=0.2"
+        )
+        .fromTo(card.querySelectorAll(".skill-icon"),
+          { scale: 0, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.4, stagger: 0.06, ease: "back.out(1.7)", force3D: true },
+          "-=0.1"
+        );
+      });
     }, root);
     return () => ctx.revert();
   }, []);
@@ -640,7 +696,7 @@ export function PortfolioDraft() {
                   const bentoClass = bentoClasses[index] || "col-span-12";
 
                   return (
-                     <SpotlightCard key={group.title} className={`${bentoClass} rounded-[2rem] md:rounded-[2.5rem] border border-[var(--border)] bg-[var(--bg-card)] overflow-hidden flex flex-col p-6 sm:p-8 transition-all duration-500 hover:border-[#fa695c] hover:shadow-[0_20px_40px_rgba(250,105,92,0.1)] group relative`}>
+                     <SpotlightCard key={group.title} className={`skill-card ${bentoClass} rounded-[2rem] md:rounded-[2.5rem] border border-[var(--border)] bg-[var(--bg-card)] overflow-hidden flex flex-col p-6 sm:p-8 transition-all duration-500 hover:border-[#fa695c] hover:shadow-[0_20px_40px_rgba(250,105,92,0.1)] group relative`}>
                         
                         {/* Film Grain Noise Texture */}
                         <svg className="pointer-events-none absolute inset-0 z-0 h-full w-full opacity-[0.015] dark:opacity-[0.03] mix-blend-overlay" xmlns="http://www.w3.org/2000/svg">
@@ -656,17 +712,17 @@ export function PortfolioDraft() {
                         {/* Content Area */}
                         <div className="relative z-10 flex-1 flex flex-col">
                            <div className="flex justify-between items-start mb-4">
-                              <h3 className="text-lg md:text-xl font-black text-[var(--text-primary)] tracking-tight group-hover:text-[#fa695c] transition-colors">{group.title}</h3>
+                              <h3 className="skill-title text-lg md:text-xl font-black text-[var(--text-primary)] tracking-tight group-hover:text-[#fa695c] transition-colors">{group.title}</h3>
                               <Sparkles className="w-5 h-5 text-[#fa695c] opacity-0 group-hover:opacity-100 transition-opacity duration-300 shrink-0 ml-4" />
                            </div>
-                           <p className="text-sm md:text-base leading-[1.7] text-[var(--text-secondary)] drop-shadow-sm">{group.description}</p>
+                           <p className="skill-desc text-sm md:text-base leading-[1.7] text-[var(--text-secondary)] drop-shadow-sm">{group.description}</p>
                         </div>
 
                         {/* Bento Icon Dock Area */}
                         <div className="relative z-10 mt-8 pt-5 border-t border-[var(--border-strong)] border-dashed flex flex-wrap items-center gap-2">
                            {/* @ts-ignore */}
                            {techCat?.skills.map((skill: any, i: number) => (
-                              <div key={skill.name} className={`${i % 2 === 0 ? 'animate-float' : 'animate-float-delayed'}`}>
+                              <div key={skill.name} className={`skill-icon ${i % 2 === 0 ? 'animate-float' : 'animate-float-delayed'}`}>
                                  <MagneticIcon 
                                     tooltip={skill.name} 
                                     iconUrl={skill.icon} 
@@ -703,7 +759,7 @@ export function PortfolioDraft() {
                 return (
                   <article 
                     key={project.title} 
-                    className={`group relative overflow-hidden rounded-[2rem] border border-[var(--border)] bg-[var(--bg-card)] p-1.5 md:p-2 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] hover:-translate-y-2 hover:border-[#fa695c] ${spanClass}`}
+                    className={`works-card ${index === 0 ? '' : index % 2 !== 0 ? 'works-from-left' : 'works-from-right'} group relative overflow-hidden rounded-[2rem] border border-[var(--border)] bg-[var(--bg-card)] p-1.5 md:p-2 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] hover:-translate-y-2 hover:border-[#fa695c] ${spanClass}`}
                     style={{ 
                       '--project-accent': project.palette[2],
                       '--project-bg': project.palette[0]
