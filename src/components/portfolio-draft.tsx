@@ -211,16 +211,6 @@ export function PortfolioDraft() {
           repeat: -1,
           stagger: 1.25,
         });
-
-        /* ── Floating Skills Illustration ── */
-        gsap.to(".skills-float", {
-          y: -15,
-          duration: 3.5,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          stagger: { each: 0.3, from: "random" },
-        });
       }
 
       /* ── Scroll-triggered Reveals (GPU-friendly: transform + opacity only) ── */
