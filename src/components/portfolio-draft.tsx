@@ -752,10 +752,17 @@ export function PortfolioDraft() {
                         
                         {/* Action Button */}
                         <div className="shrink-0 group/btn self-start md:self-end mt-2 md:mt-0">
-                           <button className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-[var(--border-strong)] bg-transparent flex items-center justify-center transition-all duration-300 group-hover:bg-[#fa695c] group-hover:border-[#fa695c] group-hover:text-white group-hover:-translate-y-1 group-hover:shadow-[0_10px_20px_rgba(250,105,92,0.2)] text-[var(--text-primary)] relative overflow-hidden">
-                              <ArrowUpRight className="w-5 h-5 absolute transition-all duration-300 group-hover/btn:translate-x-10 group-hover/btn:-translate-y-10" />
-                              <ArrowUpRight className="w-5 h-5 absolute -translate-x-10 translate-y-10 transition-all duration-300 group-hover/btn:translate-x-0 group-hover/btn:translate-y-0" />
-                           </button>
+                           {project.link ? (
+                             <a href={project.link} target="_blank" rel="noopener noreferrer" className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-[var(--border-strong)] bg-transparent flex items-center justify-center transition-all duration-300 group-hover:bg-[#fa695c] group-hover:border-[#fa695c] group-hover:text-white group-hover:-translate-y-1 group-hover:shadow-[0_10px_20px_rgba(250,105,92,0.2)] text-[var(--text-primary)] relative overflow-hidden">
+                               <ArrowUpRight className="w-5 h-5 absolute transition-all duration-300 group-hover/btn:translate-x-10 group-hover/btn:-translate-y-10" />
+                               <ArrowUpRight className="w-5 h-5 absolute -translate-x-10 translate-y-10 transition-all duration-300 group-hover/btn:translate-x-0 group-hover/btn:translate-y-0" />
+                             </a>
+                           ) : (
+                             <div className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-[var(--border-strong)] bg-transparent flex items-center justify-center transition-all duration-300 group-hover:bg-[#fa695c] group-hover:border-[#fa695c] group-hover:text-white group-hover:-translate-y-1 group-hover:shadow-[0_10px_20px_rgba(250,105,92,0.2)] text-[var(--text-primary)] relative overflow-hidden">
+                               <ArrowUpRight className="w-5 h-5 absolute transition-all duration-300 group-hover/btn:translate-x-10 group-hover/btn:-translate-y-10" />
+                               <ArrowUpRight className="w-5 h-5 absolute -translate-x-10 translate-y-10 transition-all duration-300 group-hover/btn:translate-x-0 group-hover/btn:translate-y-0" />
+                             </div>
+                           )}
                         </div>
                      </div>
                   </article>

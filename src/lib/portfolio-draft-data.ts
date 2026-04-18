@@ -34,6 +34,7 @@ export type ProjectPreview = {
   subtitle: string;
   description: string;
   stack?: string[];
+  link?: string;
   palette: [string, string, string];
 };
 
@@ -158,7 +159,7 @@ export const siteData = {
       {
         icon: "smile",
         prefix: "Fun fact:",
-        suffix: "I've deployed everything from classic .war files to modern Docker containers.",
+        suffix: "I chose backend because CSS scared me — then I built this entire portfolio.",
       },
     ] satisfies FactItem[],
     paragraphs: [
@@ -222,9 +223,10 @@ export const siteData = {
       },
       {
         title: "Dev Portfolio Architecture",
-        subtitle: "High-performance web interactive",
-        description: "Engineered this minimalist, responsive portfolio to showcase fullstack capabilities. Features Apple-style Bento grids, magnetic hover mechanics, and abstract glassmorphism UI structures.",
-        stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+        subtitle: "Handcrafted from scratch",
+        description: "Built from scratch using Next.js 16 + Turbopack. Features a CSS-only preloader, custom theme engine, GPU-optimized GSAP animations, and a Vercel Speed Insights score of 90+.",
+        stack: ["Next.js 16", "React 19", "GSAP", "TypeScript", "Tailwind CSS", "Vercel"],
+        link: "https://pyae-phyoe-kyaw-portfolio.vercel.app/",
         palette: ["#18181b", "#27272a", "#d946ef"],
       },
     ] satisfies ProjectPreview[],
