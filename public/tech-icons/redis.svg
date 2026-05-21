@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Redis</title>
+  <path fill="#D82C20" d="M32 6 6 19l26 13 26-13L32 6Z"/>
+  <path fill="#A41E11" d="M6 29v8l26 13 26-13v-8L32 42 6 29Z"/>
+  <path fill="#C02518" d="M6 39v8l26 13 26-13v-8L32 52 6 39Z"/>
+  <path fill="#fff" d="m29.5 16 4.1 7.2 8.1 1.7-5.6 6.1.9 8.2-7.5-3.5-7.5 3.5.9-8.2-5.6-6.1 8.1-1.7 4.1-7.2Z" opacity=".92"/>
+</svg>

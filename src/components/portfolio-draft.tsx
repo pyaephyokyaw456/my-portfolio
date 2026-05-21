@@ -64,7 +64,8 @@ function MagneticIcon({ tooltip, iconUrl, altText }: { tooltip: string; iconUrl:
             alt={altText} 
             width={40}
             height={40}
-            loading="lazy"
+            loading="eager"
+            decoding="async"
             className="w-full h-full object-contain grayscale opacity-80 dark:opacity-60 transition-all duration-300 group-hover/icon:grayscale-0 group-hover/icon:opacity-100" 
           />
        </div>
@@ -440,7 +441,7 @@ export function PortfolioDraft() {
           {/* ── HERO ── */}
           <section className="pb-12 lg:pb-40 overflow-hidden flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-0 mt-8 mb-8" id="hero">
             {/* Left Side: Text and CTA */}
-            <div className="flex-1 max-w-[55rem] lg:max-w-[50%] lg:pr-8 order-2 lg:order-1 pt-4 sm:pt-6 lg:pt-0">
+            <div className="flex-1 max-w-[55rem] lg:basis-[58%] lg:max-w-[58%] lg:pr-8 xl:basis-[56%] xl:max-w-[56%] order-2 lg:order-1 pt-4 sm:pt-6 lg:pt-0">
               <div className="hero-badge inline-flex items-center gap-3 rounded-full border border-[var(--border)] bg-[#2b2929] px-5 py-2 text-xs font-bold tracking-widest uppercase text-white shadow-sm">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60"></span>
@@ -449,7 +450,7 @@ export function PortfolioDraft() {
                 {siteData.hero.badge}
               </div>
 
-              <h1 className="mt-10 text-[clamp(2.5rem,5vw,6rem)] leading-[0.95] tracking-tight text-[var(--text-primary)] font-black flex flex-wrap">
+              <h1 className="mt-10 text-[clamp(2.5rem,4.4vw,5.5rem)] leading-[0.95] tracking-tight text-[var(--text-primary)] font-black flex flex-wrap lg:flex-nowrap lg:whitespace-nowrap">
                  {siteData.hero.titleTop.split(" ").map((word, wIdx) => (
                     <span key={wIdx} className="overflow-hidden inline-flex mr-4 pb-4 -mb-4">
                       {Array.from(word).map((char, cIdx) => (
@@ -485,7 +486,7 @@ export function PortfolioDraft() {
             </div>
 
             {/* Right Side: Portrait Image */}
-            <div className="flex-1 hero-support flex justify-center lg:justify-end relative order-1 lg:order-2 mt-2 lg:mt-0">
+            <div className="flex-1 lg:basis-[42%] xl:basis-[44%] hero-support flex justify-center lg:justify-end relative order-1 lg:order-2 mt-2 lg:mt-0">
                <div className="relative w-full max-w-[320px] sm:max-w-[360px] md:max-w-[450px] lg:max-w-[550px] z-10 mx-auto drop-shadow-[0_10px_40px_rgba(0,0,0,0.15)] flex justify-center items-center overflow-hidden lg:overflow-visible">
                   {siteData.hero.image && (
                      <div className="relative w-full h-[36vh] min-h-[16rem] max-h-[24rem] sm:h-[46vh] sm:min-h-[20rem] sm:max-h-[28rem] md:h-[64vh] lg:h-[85vh] lg:max-h-none">

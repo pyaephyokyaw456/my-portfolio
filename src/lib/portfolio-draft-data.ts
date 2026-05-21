@@ -95,39 +95,39 @@ export const siteData = {
       {
         category: "Backend Architecture",
         skills: [
-          { name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" },
-          { name: "Spring Boot", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" },
-          { name: "Spring Security", icon: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iIzZEQjMzRiI+PHBhdGggZD0iTTEyIDFMMyA1djZjMCA1LjU1IDMuODQgMTAuNzQgOSAxMiA1LjE2LTEuMjYgOS02LjQ1IDktMTJWNWwtOS00em0tMiAxNmwtNC00IDEuNDEtMS40MUwxMCAxNC4xN2w2LjU5LTYuNTlMMTggOWwtOCA4eiIvPjwvc3ZnPg==" },
-          { name: "Hibernate JPA", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/hibernate/hibernate-original.svg" },
-          { name: "Apache JMeter", icon: "https://upload.wikimedia.org/wikipedia/commons/2/25/Apache_JMeter_logo.svg" }
+          { name: "Java", icon: "/tech-icons/java.svg" },
+          { name: "Spring Boot", icon: "/tech-icons/spring.svg" },
+          { name: "Spring Security", icon: "/tech-icons/spring-security.svg" },
+          { name: "Hibernate JPA", icon: "/tech-icons/hibernate.svg" },
+          { name: "Apache JMeter", icon: "/tech-icons/jmeter.svg" }
         ]
       },
       {
         category: "Database & APIs",
         skills: [
-          { name: "MSSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" },
-          { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" },
-          { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" },
-          { name: "GraphQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg" },
-          { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg" }
+          { name: "MSSQL", icon: "/tech-icons/mssql.svg" },
+          { name: "MySQL", icon: "/tech-icons/mysql.svg" },
+          { name: "PostgreSQL", icon: "/tech-icons/postgresql.svg" },
+          { name: "GraphQL", icon: "/tech-icons/graphql.svg" },
+          { name: "Redis", icon: "/tech-icons/redis.svg" }
         ]
       },
       {
         category: "Frontend Ecology",
         skills: [
-          { name: "Angular", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg" },
-          { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
-          { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" },
-          { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" },
-          { name: "Tailwind CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" }
+          { name: "Angular", icon: "/tech-icons/angular.svg" },
+          { name: "React", icon: "/tech-icons/react.svg" },
+          { name: "Next.js", icon: "/tech-icons/nextjs.svg" },
+          { name: "TypeScript", icon: "/tech-icons/typescript.svg" },
+          { name: "Tailwind CSS", icon: "/tech-icons/tailwindcss.svg" }
         ]
       },
       {
         category: "DevOps & Tools",
         skills: [
-          { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" },
-          { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" },
-          { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" }
+          { name: "Git", icon: "/tech-icons/git.svg" },
+          { name: "Docker", icon: "/tech-icons/docker.svg" },
+          { name: "AWS", icon: "/tech-icons/aws.svg" }
         ]
       }
     ],
